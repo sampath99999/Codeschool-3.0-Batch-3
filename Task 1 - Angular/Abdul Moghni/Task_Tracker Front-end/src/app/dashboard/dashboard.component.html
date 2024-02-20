@@ -1,0 +1,118 @@
+<div class="container mt-5">
+    <h2>Task Table</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="form-group">
+                            <label for="Category">Category</label>
+                            <select class="form-control" id="Category" [(ngModel)]="Filter_Category">
+                      <option>Non-Tech</option>
+                      <option>Tech</option>
+                      <option></option>
+                    </select>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            <label for="Category">Priority</label>
+                            <select class="form-control" id="Priority" [(ngModel)]="Filter_Priority ">
+                              <option>Low</option>
+                              <option>Medium</option>
+                              <option>High</option>
+                              <option></option>
+                    </select>
+                        </div>
+                    </th>
+
+
+                    <th>
+                        <label for="taskName ">Task Name</label>
+                        <input type="text " class="form-control " id="taskname " [(ngModel)]="Filter_Name ">
+                    </th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Description</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(detail of Data;track $index){ @if(Filter_Name =='' && Filter_Category =='' && Filter_Priority ==''){
+                <tr>
+                    <td>{{detail['task_name']}}</td>
+                    <td>{{detail['category']}}</td>
+                    <td>{{detail['priority']}}</td>
+                    <td>{{detail['task_description']}}</td>
+                    <td>{{detail['deadline']}}</td>
+                    <td>{{detail['task_status']}}</td>
+                </tr> } @if((Filter_Name !=='' && Filter_Category =='' && Filter_Priority =='')&& (Filter_Name===detail['task_name'])){
+                <tr>
+                    <td>{{detail['task_name']}}</td>
+                    <td>{{detail['category']}}</td>
+                    <td>{{detail['priority']}}</td>
+                    <td>{{detail['task_description']}}</td>
+                    <td>{{detail['deadline']}}</td>
+                    <td>{{detail['task_status']}}</td>
+                </tr> } @if((Filter_Name =='' && Filter_Category !=='' && Filter_Priority =='')&& (Filter_Category===detail['category'])){
+                <tr>
+                    <td>{{detail['task_name']}}</td>
+                    <td>{{detail['category']}}</td>
+                    <td>{{detail['priority']}}</td>
+                    <td>{{detail['task_description']}}</td>
+                    <td>{{detail['deadline']}}</td>
+                    <td>{{detail['task_status']}}</td>
+                </tr> } @if((Filter_Name =='' && Filter_Category =='' && Filter_Priority !=='')&& (Filter_Priority===detail['priority'])){
+                <tr>
+                    <td>{{detail['task_name']}}</td>
+                    <td>{{detail['category']}}</td>
+                    <td>{{detail['priority']}}</td>
+                    <td>{{detail['task_description']}}</td>
+                    <td>{{detail['deadline']}}</td>
+                    <td>{{detail['task_status']}}</td>
+                </tr> } @if((Filter_Name =='' && Filter_Category !=='' && Filter_Priority !=='')&& (Filter_Priority===detail['priority']) && Filter_Category===detail['category']){
+                <tr>
+                    <td>{{detail['task_name']}}</td>
+                    <td>{{detail['category']}}</td>
+                    <td>{{detail['priority']}}</td>
+                    <td>{{detail['task_description']}}</td>
+                    <td>{{detail['deadline']}}</td>
+                    <td>{{detail['task_status'] }}
+                    </td>
+                </tr> }@if((Filter_Name !=='' && Filter_Category =='' && Filter_Priority !=='')&& (Filter_Priority===detail['priority'])&& Filter_Name===detail['name']){
+                <tr>
+                    <td>{{detail['task_name']}}</td>
+                    <td>{{detail['category']}}</td>
+                    <td>{{detail['priority']}}</td>
+                    <td>{{detail['task_description']}}</td>
+                    <td>{{detail['deadline']}}</td>
+                    <td>{{detail['task_status']}}</td>
+                </tr> }@if((Filter_Name =='' && Filter_Category !=='' && Filter_Priority =='')&& (Filter_Priority===detail['category'])&& Filter_Name===detail['name']){
+                <tr>
+                    <td>{{detail['task_name']}}</td>
+                    <td>{{detail['category']}}</td>
+                    <td>{{detail['priority']}}</td>
+                    <td>{{detail['task_description']}}</td>
+                    <td>{{detail['deadline']}}</td>
+                    <td>{{detail['task_status']}}</td>
+                </tr> } @if((Filter_Name !=='' && Filter_Category !=='' && Filter_Priority !=='')&& (Filter_Priority===detail['priority'])&& Filter_Name===detail['name']&& Filter_Category===detail['category']){
+                <tr>
+                    <td>{{detail['task_name']}}</td>
+                    <td>{{detail['category']}}</td>
+                    <td>{{detail['priority']}}</td>
+                    <td>{{detail['task_description']}}</td>
+                    <td>{{detail['deadline']}}</td>
+                    <td>{{detail['task_status']}}</td>
+                </tr> }}
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<app-footer></app-footer>

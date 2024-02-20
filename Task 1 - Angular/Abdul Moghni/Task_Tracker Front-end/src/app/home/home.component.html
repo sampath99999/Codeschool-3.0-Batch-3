@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <h2>Task Form</h2>
+
+    <div class="form-group">
+        <label for="taskName">Task Name</label>
+        <input type="text" class="form-control" id="Task_Name" [(ngModel)]="user.Task_Name">
+    </div>
+    <div class="form-group">
+        <label for="Category">Category</label>
+        <select class="form-control" id="Category" [(ngModel)]="user.Category">
+        <option>Non-Tech</option>
+        <option>Tech</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Priority">Priority</label>
+        <select class="form-control" id="Priority" [(ngModel)]="user.Priority">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Task_Description">Description</label>
+        <textarea class="form-control" id="Task_Description" rows="3" [(ngModel)]="user.Task_Description"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="deadline">Deadline</label>
+        <input type="date" class="form-control" id="Deadline" [(ngModel)]="user.Deadline">
+    </div>
+    <div class="form-group mb-2">
+        <label for="Task_Status">Status</label>
+        <select class="form-control" id="Task_Status" [(ngModel)]="user.Task_Status">
+        <option>Not Started</option>
+        <option>In Progress</option>
+        <option>Completed</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="submit_data()">Submit Task</button>
+    <app-footer></app-footer>
