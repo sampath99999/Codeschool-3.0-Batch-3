@@ -1,0 +1,57 @@
+<!-- Navbar -->
+<nav class="navbar  navbar-expand-lg navbar-dark bg-dark">
+    <!-- Container wrapper -->
+    <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" routerLink="/"><img id="TaskTracker" src="../assets/LogoImg.png" alt="TaskTracker" draggable="false" height="60" /> Task Tracker</a>
+
+        <!-- Toggle button -->
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <!-- Collapsible wrapper -->
+
+        <div class="collapse navbar-collapse ms-auto" id="navbarSupportedContent">
+
+            <ul class="navbar-nav ">
+                <li class="nav-item me-3">
+                    <a class="nav-link d-flex align-items-center" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+                </li>
+
+
+                <li class="nav-item me-3">
+                    <a class="nav-link d-flex align-items-center" routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">About</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link d-flex align-items-center me-3" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <i class="" style="white-space:nowrap;">Contact Us</i>
+                    </a>
+                </li>
+
+
+                <li class="nav-item ">
+                    <a class="nav-link d-flex align-items-center me-3" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <i class="" style="white-space:nowrap;">Dashboard</i>
+                    </a>
+                </li>
+
+
+                <li class="nav-item ">
+                    <a class="nav-link d-flex align-items-center me-3" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <i class="" style="white-space:nowrap;">Login</i>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link d-flex align-items-center me-3" routerLink="/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <i class="" style="white-space:nowrap;">Sign Up</i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
