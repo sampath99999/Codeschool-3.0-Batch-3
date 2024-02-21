@@ -1,0 +1,40 @@
+.mat-mdc-tab-group,
+.mat-mdc-tab-nav-bar {
+  --mdc-tab-indicator-active-indicator-color: #ffffff;
+  --mdc-tab-indicator-active-indicator-font-weight: bold;
+
+  --mat-tab-header-disabled-ripple-color: rgba(0, 0, 0, 0.38);
+  --mat-tab-header-pagination-icon-color: #000;
+  --mat-tab-header-inactive-label-text-color: rgb(255, 255, 255);
+  --mat-tab-header-active-label-text-color: #ffffff;
+  --mat-tab-header-active-ripple-color: #ffffff;
+  --mat-tab-header-inactive-ripple-color: #ffffff;
+  --mat-tab-header-inactive-focus-label-text-color: rgba(0, 0, 0, 0.6);
+  --mat-tab-header-inactive-hover-label-text-color: rgba(0, 0, 0, 0.6);
+  --mat-tab-header-active-focus-label-text-color: #ffffff;
+  --mat-tab-header-active-hover-label-text-color: #ffffff;
+}
+.mat-mdc-tab .mdc-tab__text-label {
+  color: var(--mat-tab-header-inactive-label-text-color);
+  display: inline-flex;
+  align-items: center;
+}
+.backFilter {
+  background-color: rgba(255, 255, 255, 0.051) !important;
+  backdrop-filter: blur(100px) !important;
+}
+
+* {
+  color: white !important;
+}
+input {
+  background-color: rgba(255, 255, 255, 0.118) !important;
+  backdrop-filter: blur(20px);
+}
+button:hover {
+  background-color: rgba(255, 255, 255, 0.051) !important;
+  font-weight: bold;
+}
+.full {
+  height: 100vh !important;
+}

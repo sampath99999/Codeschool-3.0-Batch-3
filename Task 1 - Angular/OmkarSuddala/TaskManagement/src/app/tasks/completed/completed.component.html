@@ -1,0 +1,234 @@
+<app-header></app-header>
+<app-tabs></app-tabs>
+<div class="row justify-content-center">
+  <!-- @for(item of allt; track item){
+<p class="text-white">{{ item.taskname }}</p>
+} -->
+
+  <div class="col-11 overflow-auto">
+    <div
+      class="d-flex shadow gap-3 flex-wrap justify-content-center filtersDiv pt-3 pb-2 mb-2 pe-lg-5 rounded-4 justify-content-lg-end"
+    >
+      <!-- <h4 class="me-auto">Completed tasks</h4> -->
+      <div class="mb-3">
+        <select
+          class="form-select rounded-pill"
+          aria-label="Default select example"
+          [(ngModel)]="searchCategory"
+          (change)="onSearch()"
+        >
+          <option selected value="">Category</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <select
+          class="form-select rounded-pill"
+          aria-label="Default select example"
+          [(ngModel)]="searchPriority"
+          (change)="onSearch()"
+        >
+          <option selected value="">Priority</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+      <div>
+        <input
+          type="text"
+          name="search"
+          class="ms-auto form-control rounded-pill"
+          id=""
+          [(ngModel)]="searchTerm"
+          placeholder="Search..."
+          (input)="onSearch()"
+        />
+      </div>
+    </div>
+    <div class="mt-2 py-2 px-3 shadow rounded-4">
+      <table
+        class="table-borderless overflow-y-scroll table table-responsive px-3"
+      >
+        <thead class="px-5">
+          <tr>
+            <th>Sno</th>
+            <th>taskname</th>
+            <th>category</th>
+            <th>description</th>
+            <th>deadline</th>
+            <th>priority</th>
+            <th>status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (loading) {
+          <tr>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+            <td class="loading">
+              <div class="bar"></div>
+            </td>
+          </tr>
+
+          } @for( task of allt; track allt) { @if(task.status=='Completed'){
+
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ task.taskname }}</td>
+            <td>{{ task.category }}</td>
+            <td>{{ task.description.substring(0, 50) + "..." }}</td>
+
+            <td>{{ task.deadline | date : "MM/dd/yyyy" }}</td>
+            <td>{{ task.priority }}</td>
+            <td>
+              <span class="badge bg-success rounded-pill">{{
+                task.status
+              }}</span>
+            </td>
+          </tr>
+          } }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-end mt-3">
+      <button
+        type="button"
+        class="btn btn-outline-light rounded-pill"
+        [class.disabled]="currentPage === 1"
+        (click)="previousPage()"
+      >
+        Previous
+      </button>
+      @for(page of pageNumbers(); track pageNumbers ){
+
+      <button
+        class="bg-transparent d-none text-white rounded-pill"
+        [class.active.d-inline-block]="currentPage === $index + 1"
+        (click)="handleClick($index + 1)"
+      >
+        {{ $index + 1 }}
+      </button>
+
+      }
+      <button
+        type="button"
+        class="btn btn-outline-light ms-2 rounded-pill"
+        [class.disabled]="currentPage === totalItems"
+        (click)="nextPage()"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</div>

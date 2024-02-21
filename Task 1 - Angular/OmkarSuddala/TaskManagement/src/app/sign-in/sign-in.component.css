@@ -1,0 +1,16 @@
+.backFilter {
+  background-color: rgba(255, 255, 255, 0.051) !important;
+  backdrop-filter: blur(100px) !important;
+}
+
+* {
+  color: white !important;
+}
+input {
+  background-color: rgba(255, 255, 255, 0.118) !important;
+  backdrop-filter: blur(20px);
+}
+button:hover {
+  background-color: rgba(255, 255, 255, 0.051) !important;
+  font-weight: bold;
+}
