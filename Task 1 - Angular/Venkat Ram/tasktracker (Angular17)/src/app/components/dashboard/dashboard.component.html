@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <h2 class="text-center">Task Dashboard</h2>
+    <div class="d-flex container justify-content-center align-items-center">
+
+        <div class="m-5">
+            <input type="text" autocomplete="off" class="text-center form-control border border-1" id="taskName"
+                [(ngModel)]="searchText" placeholder="Search" style="border: lightgray;">
+        </div>
+
+    </div>
+
+    <div class="my-3 table-responsive">
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Description</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of data | search: searchText">
+                    <td>{{item['task_name']}}</td>
+                    <td>{{item['category']}}</td>
+                    <td>{{item['priority']}}</td>
+                    <td>{{item['description']}}</td>
+                    <td>{{item['deadline']}}</td>
+                    <td>{{item['status']}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

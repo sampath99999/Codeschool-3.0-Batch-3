@@ -1,0 +1,43 @@
+<div class="p-5 rounded-3 d-flex flex-wrap flex-column gap-4 container mt-5 shadow-lg" id="myform" style="width: 50%;">
+    <div>
+        <h2 class="my-4 text-center">Create a Task</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-8 d-flex flex-column gap-2 justify-content-between">
+            <input type="text" autocomplete="off" class="text-center form-control border border-1" id="taskName"
+                [(ngModel)]="task.taskName" placeholder="What's it called?" style="border: lightgray;">
+            <textarea class="form-control" id="taskDesc" [(ngModel)]="task.taskDesc" rows="5"
+                placeholder="Describe the task"></textarea>
+        </div>
+        <div class="col-4 d-flex flex-column gap-4">
+            <select class="form-control" id="category" [(ngModel)]="task.category">
+                <option value="" selected disabled hidden>What does it fall under?</option>
+                <option>Personal</option>
+                <option>Professional</option>
+                <option>Miscellaneous</option>
+            </select>
+            <select class="form-control" id="priority" [(ngModel)]="task.priority">
+                <option value="" selected disabled hidden>How important is it?</option>
+                <option>High Priority</option>
+                <option>Medium Priority</option>
+                <option>Low Priority</option>
+            </select>
+            <select class="form-control" id="taskStatus" [(ngModel)]="task.taskStatus">
+                <option value="" selected disabled hidden>What's the status?</option>
+                <option>Holding</option>
+                <option>Prioritized</option>
+                <option>Started</option>
+                <option>Completed</option>
+            </select>
+            <input type="text" autocomplete="off" class="border border-1 form-control" id="deadline"
+                [(ngModel)]="task.deadline" placeholder="To be completed by?" onfocus="(this.type='date')"
+                style="border: lightgray;">
+        </div>
+        <hr class="my-5">
+        <div class=" mb-3 d-flex justify-content-center">
+            <button type="submit" routerLink="/dashboard" style="width: auto;" class="btn btn-outline-dark"
+                (click)="newtask_api()">Submit
+                Task</button>
+        </div>
+    </div>
