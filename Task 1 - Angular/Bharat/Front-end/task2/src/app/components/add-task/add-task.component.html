@@ -1,0 +1,158 @@
+<body>
+  <nav class="navbar navbar-expand-sm shadow" style="background-color: #016072">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/" style="color: white"
+        ><h1>PixelPro Task</h1></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ms-auto">
+          <ng-container *ngFor="let menus of navbar">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="menus.url"
+                routerLinkActive="active"
+                style="color: white"
+                >{{ menus.name }}</a
+              >
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="task-form mt-5">
+    <h2>Task Form</h2>
+    <form #details="ngForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="taskName">Task Name:</label>
+          <input
+            type="text"
+            id="taskName"
+            name="taskName"
+            [(ngModel)]="task.taskName"
+            required
+            #taskName="ngModel"
+          />
+          <p
+            class="fw-bold text-light"
+            *ngIf="taskName.invalid && taskName.touched"
+          >
+            Please Enter TaskName
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <input
+            type="text"
+            id="category"
+            name="category"
+            [(ngModel)]="task.category"
+            required
+            #category="ngModel"
+          />
+          <p
+            class="fw-bold text-light"
+            *ngIf="category.invalid && category.touched"
+          >
+            Please Enter Category
+          </p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="priority">Priority:</label>
+          <select
+            id="priority"
+            name="priority"
+            [(ngModel)]="task.priority"
+            required
+            #priority="ngModel"
+          >
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+          <p
+            class="fw-bold text-light"
+            *ngIf="priority.invalid && priority.touched"
+          >
+            Please Enter Priority
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="status">Status:</label>
+          <select
+            id="status"
+            name="status"
+            [(ngModel)]="task.status"
+            required
+            #status="ngModel"
+          >
+            <option value="todo">To Do</option>
+            <option value="inprogress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+          <p
+            class="fw-bold text-light"
+            *ngIf="status.invalid && status.touched"
+          >
+            Please Enter Status
+          </p>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            [(ngModel)]="task.description"
+            required
+            #description="ngModel"
+          ></textarea>
+          <p
+            class="fw-bold text-light"
+            *ngIf="description.invalid && description.touched"
+          >
+            Please Enter Description
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="deadline">Deadline:</label>
+          <input
+            type="date"
+            id="deadline"
+            name="deadline"
+            [(ngModel)]="task.deadline"
+            required
+            #deadline="ngModel"
+          />
+          <p
+            class="fw-bold text-light"
+            *ngIf="deadline.invalid && deadline.touched"
+          >
+            Please Enter Deadline
+          </p>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="details.invalid" (click)="addTask()">
+        Submit
+      </button>
+    </form>
+  </div>
+</body>
