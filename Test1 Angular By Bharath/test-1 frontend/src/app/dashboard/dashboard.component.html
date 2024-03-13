@@ -1,0 +1,107 @@
+<nav class="navbar shadow navbar-expand-sm shadow">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" style="color: white"
+      ><h1>VintageVertex</h1></a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ms-auto">
+        <ng-container *ngFor="let menus of navbar">
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              [routerLink]="menus.url"
+              routerLinkActive="active"
+              style="color: white"
+            >
+              {{ menus.name }}
+            </button>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="employee-list-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Designation</th>
+        <th>Phone</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(employee of employees;track employee){
+      <tr>
+        <td>{{ employee.full_name }}</td>
+        <td>{{ employee.designation }}</td>
+        <td>{{ employee.phone }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            View
+          </button>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Employee Details
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <h5>Designation:</h5>
+                  <p>Designation: {{ employee.designation }}</p>
+                  <p>DOJ: {{ employee.doj }}</p>
+                  <p>Location: {{ employee.location }}</p>
+                  <h5>Pay Details:</h5>
+                  <p>Basic Pay: {{ employee.basic_pay }}</p>
+                  <p>HRA: {{ employee.hra }}</p>
+                  <p>Incentives: {{ employee.incentives }}</p>
+                  <p>PF: {{ employee.pf }}</p>
+                  <p>Income Tax: {{ employee.income_tax }}</p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
