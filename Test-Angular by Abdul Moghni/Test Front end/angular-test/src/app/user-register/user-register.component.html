@@ -1,0 +1,39 @@
+<form class="d-flex align-items-center justify-content-center flex-column" [formGroup]="form" (submit)="register()">
+  <h3>Registration of User</h3>
+  <div class="mb-3">
+    <div class="form-floating">
+      <input type="text" class="form-control" id="name" placeholder="Your Name" required minlength="3"
+             maxlength="25" formControlName="name">
+      <label for="name">Name</label>
+      <p *ngIf="isFieldInvalid('name')" class="text-danger">{{getErrorMessage('name','Name')}}</p>
+    </div>
+  </div>
+  <div class="mb-3">
+    <div class="form-floating">
+      <input type="text" class="form-control" id="email" placeholder="Your Email" formControlName="email"
+             required minlength="3" maxlength="25">
+      <label for="email">Email</label>
+      <p *ngIf="isFieldInvalid('email')" class="text-danger">{{getErrorMessage('email','Email')}}</p>
+    </div>
+  </div>
+  <div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="password" placeholder="Your Password" formControlName="password"
+             required minlength="8" maxlength="25">
+      <label for="password">Password</label>
+      <p *ngIf="isFieldInvalid('password')" class="text-danger">{{getErrorMessage('password','Password')}}</p>
+    </div>
+  </div>
+  <div>
+    <div class="">
+      <label>General User</label>
+      <input type="radio" class="form-control-radio" name="role" id="role2" value="2" checked formControlName="role">
+<br>
+      <label>Admin</label>
+      <input type="radio" class="form-control-radio" name="role" id="role1" value="1" formControlName="role"> <br>
+
+         </div>
+  </div>
+
+  <button class="btn btn-primary mt-3">Register</button>
+</form>

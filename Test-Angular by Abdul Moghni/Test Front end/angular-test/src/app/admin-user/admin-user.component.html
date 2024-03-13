@@ -1,0 +1,25 @@
+<app-navigation-bar-after-login></app-navigation-bar-after-login>
+<div class="main"></div>
+<div class="sidebar">
+  <a class="active" >Admin</a>
+  <a (click)="registrationActive()">Register User</a>
+  <a (click)="blogActive()">Blogs</a>
+  <a (click)="userAccessControl()">User Access Control</a>
+
+</div>
+
+<div class="content">
+@if(RegisterActiveCheckbox){
+<app-user-register></app-user-register>
+}
+  @if(UserAccessCheckbox){
+    <app-user-access-control></app-user-access-control>
+  }
+
+  @if(BlogActiveCheckbox){
+    <app-blogs></app-blogs>
+  }
+</div>
+
+
+
