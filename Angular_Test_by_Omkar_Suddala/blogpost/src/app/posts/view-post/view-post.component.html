@@ -1,0 +1,52 @@
+<!-- <header> -->
+<div class="container">
+    <div class="header-banner mt-5">
+        <img
+            [src]="postImagePath + view.viewPost.blogimage"
+            alt=""
+            class="w-100 h-100 object-fit-contain"
+        />
+    </div>
+    <div class="clear"></div>
+    <!-- <nav> -->
+
+    <!-- </nav> -->
+    <!-- </header> -->
+
+    <section class="d-flex flex-column pb-0 w-100">
+        <h1>{{ view.viewPost.title }}</h1>
+        <h6 class="d-inline-block">
+            {{ view.viewPost.username }} &nbsp; &nbsp;
+            <small>{{ view.viewPost.postcreated_at }}</small>
+        </h6>
+        &nbsp; &nbsp;
+
+        <p class="text-justify text-wrap text-break">
+            {{ view.viewPost.postcontent }}
+        </p>
+    </section>
+
+    <section class="">
+        <h1>Comments</h1>
+        <div class="comments py-3 gap-2 d-flex flex-column">
+            @for(item of comments; track item){
+
+            <div
+                class="px-3 shadow py-2 rounded-3 mb-1 w-50 d-flex justify-content-between flex-column"
+            >
+                <div class="d-flex justify-content-between">
+                    <h6 class="">{{ item.username }} &nbsp;</h6>
+                    <small class="">
+                        {{ item.commentdate | date : "short" }}
+                    </small>
+                </div>
+
+                <div>
+                    <p>{{ item.comment }}</p>
+                </div>
+            </div>
+
+            } @empty { No comments. }
+        </div>
+    </section>
+</div>

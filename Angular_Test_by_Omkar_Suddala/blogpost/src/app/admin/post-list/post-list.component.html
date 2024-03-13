@@ -1,0 +1,223 @@
+<div class="conatiner-fluid h-100">
+    <div class="row justify-content-center align-items-center mx-0 px-0">
+        <div class="col-12 justify-content-center align-items-center">
+            @for(item of allPosts; track item){
+            <div class="blog-card position-relative">
+                <div class="meta">
+                    <div class="photo">
+                        <img
+                            [src]="postImagePath + item.blogimage"
+                            class="object-fit-cover w-100 h-100"
+                            alt=""
+                        />
+                    </div>
+                    <ul class="details">
+                        <li class="author">
+                            <h6 class="d-inline-block">{{ item.username }}</h6>
+                        </li>
+                        <li class="date">
+                            <small>{{ item.postcreated_at }}</small>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex flex-column description">
+                    <div class="deleteIcon">
+                        <button
+                            class="btn bi bi-x-lg"
+                            data-bs-toggle="modal"
+                            type="button"
+                            [attr.data-bs-target]="deleteId + item.postid"
+                        ></button>
+                    </div>
+                    <!-- Button trigger modal -->
+
+                    <!-- Modal -->
+
+                    <a
+                        routerLink="viewPost"
+                        class="text-decoration-none d-inline-block"
+                        (click)="viewPost(item.postid)"
+                    >
+                        <div class="">
+                            <h1 class="fs-5 fw-bold text-black">
+                                {{ item.title }}
+                            </h1>
+
+                            <p>
+                                {{ item.postcontent.substring(0, 200) + "..." }}
+                            </p>
+                        </div>
+                    </a>
+                    <div class="">
+                        <button
+                            class="btn btn-sm rounded-circle"
+                            (click)="commentsView()"
+                        >
+                            <i class="bi bi-chat fs-2"></i>
+                        </button>
+                        <div [class]="commentButtonClass">
+                            <div
+                                class="d-flex flex-column justify-content-center px-lg-4 postBody"
+                            >
+                                <div class="comments">
+                                    @for(comment of comments; track comment){
+                                    @if(item.postid==comment.postid){
+                                    <div
+                                        class="px-3 rounded-3 mb-1 d-flex justify-content-between flex-wrap"
+                                    >
+                                        <small class="d-inline-block mb-0">
+                                            {{ comment.username }} :&nbsp;
+                                            <small
+                                                >{{ comment.comment }}
+                                            </small>
+                                        </small>
+
+                                        <small class="d-inline-block mb-0">{{
+                                            comment.commentdate
+                                        }}</small>
+                                    </div>
+
+                                    } } @empty {
+                                    <h6>No comments.</h6>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="modal"
+                data-bs-backdrop="static"
+                [id]="deleteItem + item.postid"
+                tabindex="1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                Delete Post
+                            </h1>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">Are you sure!</div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                No
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                (click)="deletePost(item.postid)"
+                            >
+                                Yes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            } @empty { @if(loaderStatus){
+
+            <main class="row justify-content-center align-items-center">
+                <ul class="o-vertical-spacing o-vertical-spacing--l col-6">
+                    <li class="blog-post o-media">
+                        <div class="o-media__figure">
+                            <span
+                                class="skeleton-box"
+                                style="width: 100px; height: 80px"
+                            ></span>
+                        </div>
+                        <div class="o-media__body">
+                            <div class="o-vertical-spacing">
+                                <h3 class="blog-post__headline">
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 55%"
+                                    ></span>
+                                </h3>
+                                <p>
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 80%"
+                                    ></span>
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 90%"
+                                    ></span>
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 83%"
+                                    ></span>
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 80%"
+                                    ></span>
+                                </p>
+                                <div class="blog-post__meta">
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 70px"
+                                    ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="blog-post o-media">
+                        <div class="o-media__figure">
+                            <span
+                                class="skeleton-box"
+                                style="width: 100px; height: 80px"
+                            ></span>
+                        </div>
+                        <div class="o-media__body">
+                            <div class="o-vertical-spacing">
+                                <h3 class="blog-post__headline">
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 55%"
+                                    ></span>
+                                </h3>
+                                <p>
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 80%"
+                                    ></span>
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 90%"
+                                    ></span>
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 83%"
+                                    ></span>
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 80%"
+                                    ></span>
+                                </p>
+                                <div class="blog-post__meta">
+                                    <span
+                                        class="skeleton-box"
+                                        style="width: 70px"
+                                    ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </main>
+            } }
+        </div>
+    </div>
+</div>

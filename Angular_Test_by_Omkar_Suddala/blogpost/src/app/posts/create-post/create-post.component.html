@@ -1,0 +1,45 @@
+<div class="container">
+  <h1 class="heading">Post creation</h1>
+
+  <p class="para">
+    Take your art to the next level. Get it seen by millions of people.
+  </p>
+
+  <form (ngSubmit)="uploadPost()" enctype="multipart/form-data">
+    @if(imageUrl){
+    <img
+      [src]="imageUrl"
+      name="image"
+      alt="profile pic"
+      height="300"
+      width="300"
+    />
+    }
+
+    <input type="file" name="file" id="" (change)="onFileSelected($event)" />
+    <small class="text-start text-danger" [innerHTML]="imageError"></small>
+    <!-- <label class="text-start" for="title">Title:</label> -->
+    <input
+      type="text"
+      name="postTitle"
+      [(ngModel)]="postTitle"
+      placeholder="Post title"
+      required
+    />
+    <small class="text-start text-danger" [innerHTML]="titleError"></small>
+
+    <!-- <label class="text-start" for="description">Post caption:</label> -->
+    <div class="editor">
+      <angular-editor
+        class="text-black bg-white editor"
+        [placeholder]="'Enter post caption here...'"
+        [(ngModel)]="postCaption"
+        [config]="config"
+        width=""
+        name="editor"
+      ></angular-editor>
+      <small class="text-start text-danger" [innerHTML]="captionError"></small>
+    </div>
+    <button type="submit">Create post</button>
+  </form>
+</div>
