@@ -1,0 +1,63 @@
+<div class="p-5 rounded-3 d-flex flex-wrap flex-column gap-4 container mt-5 shadow-lg" id="myform" style="width: 50%;">
+    <div>
+        <h2 class="text-center">Claim a Travel</h2>
+        <hr>
+    </div>
+
+    <div class="mb-5 d-flex flex-column gap-3 justify-content-center align-items-center">
+        <input type="text" autocomplete="off" [(ngModel)]="claim.name"
+            class="text-center form-control border border-1 w-75 text-center" id="taskName"
+            placeholder="Name of the Claim" style="border: lightgray;">
+
+        <input type="number" autocomplete="off" [(ngModel)]="claim.amt"
+            class="text-center form-control border border-1 w-75 text-center" id="taskName" placeholder="Claim Value"
+            style="border: lightgray;">
+    </div>
+
+    <div class="row">
+        <div class="col-6 d-flex flex-column justify-content-center align-items-center gap-5">
+            <div class="d-flex flex-column gap-2 justify-content-between">
+                <input type="text" autocomplete="off" [(ngModel)]="claim.from"
+                    class="text-center form-control border border-1" id="taskName" placeholder="From?"
+                    style="border: lightgray;">
+            </div>
+            <div class="d-flex flex-column gap-2 justify-content-between">
+                <input type="text" autocomplete="off" [(ngModel)]="claim.to"
+                    class="text-center form-control border border-1" id="taskName" placeholder="To?"
+                    style="border: lightgray;">
+            </div>
+        </div>
+        <div class="col-6 d-flex flex-column gap-4 justify-content-center align-items-center">
+            <select class="form-control" id="category" [(ngModel)]="claim.modeOfTravel">
+                <option value="" selected disabled hidden>Mode of Travel</option>
+                <option>By Road</option>
+                <option>Railways</option>
+                <option>Airline</option>
+            </select>
+
+            @if(claim.modeOfTravel == "By Road"){
+            <select class="form-control" id="priority" [(ngModel)]="claim.ownership">
+                <option value="" selected disabled hidden>Road Ownership</option>
+                <option>Public</option>
+                <option>Private / Personal</option>
+            </select>
+            } @else if(claim.modeOfTravel == "Airline") {
+            <input type="text" autocomplete="off" [(ngModel)]="claim.airTicket"
+                class="text-center form-control border border-1" id="taskName" placeholder="Air Ticket Details"
+                style="border: lightgray;">
+            } @else if(claim.modeOfTravel == "Railways") {
+            <input type="text" autocomplete="off" [(ngModel)]="claim.railClass"
+                class="text-center form-control border border-1" id="taskName" placeholder="Rail Ticket Class"
+                style="border: lightgray;">
+            <input type="number" autocomplete="off" [(ngModel)]="claim.railTicket"
+                class="text-center form-control border border-1" id="taskName" placeholder="Rail Ticket Number"
+                style="border: lightgray;">
+            }
+        </div>
+        <hr class="my-5">
+        <div class=" mb-3 d-flex gap-5 justify-content-center">
+            <button type="submit" (click)="makeAClaim()" style="width: auto;" class="btn btn-outline-dark">Submit
+                Claim</button>
+
+        </div>
+    </div>

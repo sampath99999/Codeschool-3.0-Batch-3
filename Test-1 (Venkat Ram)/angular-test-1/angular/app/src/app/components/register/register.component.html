@@ -1,0 +1,49 @@
+<div class="container d-flex justify-content-center my-5">
+    <form [formGroup]="registerForm" class="p-3 d-flex flex-column gap-5 w-25 border border-2">
+        <div>
+            <h3 class="text-center">Register</h3>
+            <hr>
+        </div>
+        <div class="d-flex flex-column gap-1">
+            <input class="p-2" type="text" placeholder="Email" formControlName="email" />
+            @if(registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched) ){
+                @if(registerForm.get('email')?.errors?.['required']){
+                    <span>eMail is Required.</span>
+                }
+            }
+            @if(registerForm.get('email')?.errors?.['minlength'] && registerForm.get('email')?.errors?.['email']){
+            <span>Invalid Email!</span>
+            }
+        </div>
+
+        <div class="d-flex flex-column gap-1">
+            <input class="p-2" type="password" placeholder="Password" formControlName="password" />
+            @if(registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty ||
+            registerForm.get('password')?.touched) ){
+                @if(registerForm.get('password')?.errors?. ['required']){
+                <span>Password is required.</span>
+                }
+            }
+            @if(registerForm.get('password')?.errors?.['minlength']){
+                <span>Password must be at least 8 characters.</span>
+            }
+        </div>
+
+        <div class="d-flex flex-column gap-1">
+            <input class="p-2" type="username" placeholder="Username" formControlName="username" />
+            @if(registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty ||
+            registerForm.get('username')?.touched) ){
+                @if(registerForm.get('username')?.errors?. ['required']){
+                <span>Username is required.</span>
+                }
+            }
+            @if(registerForm.get('username')?.errors?.['minlength']){
+                <span>Username must be at least 8 characters.</span>
+            }
+        </div>
+
+        <div class="d-flex flex-column">
+            <button type="button" [disabled]="!registerForm.valid" class="btn btn-secondary" (click)="register()">Register Here</button>
+        </div>
+    </form>
+</div>

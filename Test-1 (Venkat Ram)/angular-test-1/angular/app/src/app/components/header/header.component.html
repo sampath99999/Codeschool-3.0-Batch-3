@@ -1,0 +1,22 @@
+<div class="sticky-top bg-white mb-5 p-3 container-fluid d-flex align-items-center shadow-lg" style="opacity: 0.9;">
+    <div class="d-flex justify-content-center container">
+        <a href="" class="display-5">Claim Tracker</a>
+    </div>
+    <div class="container d-flex gap-5 justify-content-center align-items-center">
+        @if (getItem('username')) {
+        <h3 class="mb-0">Hi {{getItem('username')}}!</h3>
+        <a href="" routerLink="/claim" routerLinkActive="active" class="btn btn-outline-dark fs-5"
+            style="white-space:nowrap;">Claim a Travel</a>
+        }
+        
+        @if (getItem('username')){
+        <span>
+            <a href="" routerLink="/signin" routerLinkActive="active" class="btn btn-outline-dark fs-5"
+                style="white-space:nowrap;" (click)="signout()">Sign Out</a>
+        </span>
+        } @else {
+            <button type="button" routerLink="/login" class="btn btn-outline-dark fs-5" (click)="login()">Log In</button>
+        }
+
+    </div>
+</div>

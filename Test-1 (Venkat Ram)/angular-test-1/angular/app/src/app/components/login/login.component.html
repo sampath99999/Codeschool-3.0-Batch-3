@@ -1,0 +1,37 @@
+<div class="container d-flex justify-content-center my-5">
+    <form [formGroup]="loginForm" (submit)="submit()" class="p-3 d-flex flex-column gap-5 w-25 border border-2">
+        <div>
+            <h3 class="text-center">Log In</h3>
+            <hr>
+        </div>
+        <div class="d-flex flex-column gap-1">
+            <input class="p-2" type="text" placeholder="Email" formControlName="email" />
+            @if(loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) ){
+                @if(loginForm.get('email')?.errors?.['required']){
+                    <span>eMail is Required.</span>
+                }
+            }
+            @if(loginForm.get('email')?.errors?.['minlength'] && loginForm.get('email')?.errors?.['email']){
+            <span>Invalid Email!</span>
+            }
+        </div>
+
+        <div class="d-flex flex-column gap-1">
+            <input class="p-2" type="password" placeholder="Password" formControlName="password" />
+            @if(loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty ||
+            loginForm.get('password')?.touched) ){
+                @if(loginForm.get('password')?.errors?. ['required']){
+                <span>Password is required.</span>
+                }
+            }
+            @if(loginForm.get('password')?.errors?.['minlength']){
+                <span>Password must be at least 8 characters.</span>
+            }
+        </div>
+        <div class="d-flex flex-column gap-2">
+            <button type="submit" [disabled]="!loginForm.valid" class="btn btn-secondary">Login</button>
+            <p class="mt-3 text-center">Or</p>
+            <button type="button" routerLink="/register" class="btn btn-secondary" (click)="register()">Register Here</button>
+        </div>
+    </form>
+</div>
