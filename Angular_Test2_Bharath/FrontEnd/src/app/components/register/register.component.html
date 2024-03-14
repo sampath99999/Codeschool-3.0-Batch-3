@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-sm shadow">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" style="color: white"
+      ><h1>Pixel Pictures</h1></a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ms-auto">
+        <ng-container *ngFor="let menus of navbar">
+          <li class="nav-item">
+            <button
+              class="nav-link nav-btn"
+              [routerLink]="menus.url"
+              routerLinkActive="active"
+            >
+              {{ menus.name }}
+            </button>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<form
+  class="d-flex align-items-center head justify-content-center flex-column"
+  [formGroup]="form"
+  (ngSubmit)="register()"
+>
+  <h2>Register</h2>
+  <div class="mb-1">
+    <label for="username">Username:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      placeholder="Username"
+      formControlName="username"
+    />
+    <p *ngIf="isFieldInvalid('username')" class="text-light">
+      {{ getErrorMessage("username", "Username") }}
+    </p>
+  </div>
+  <div class="mb-1">
+    <label for="email">Email:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="email"
+      placeholder="Email"
+      formControlName="email"
+    />
+    <p *ngIf="isFieldInvalid('email')" class="text-light">
+      {{ getErrorMessage("email", "Email") }}
+    </p>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <p *ngIf="isFieldInvalid('password')" class="text-light">
+      {{ getErrorMessage("password", "Password") }}
+    </p>
+  </div>
+
+  <button class="btn btn-primary mt-2">Register</button>
+  <div class="d-flex justify-content-center">
+    <a class="nav-link mt-3" routerLink="/login" routerLinkActive="active"
+      >Already have an account.?Login</a
+    >
+  </div>
+</form>

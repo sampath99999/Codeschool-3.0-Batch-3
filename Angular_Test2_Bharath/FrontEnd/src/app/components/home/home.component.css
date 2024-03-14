@@ -1,0 +1,13 @@
+
+ .nav-btn{
+    margin-right:30px;
+    border:2px solid white ;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+ }
+
+ .nav-btn:hover{
+    background-color:rgb(27, 27, 27);
+  color: white;
+ }

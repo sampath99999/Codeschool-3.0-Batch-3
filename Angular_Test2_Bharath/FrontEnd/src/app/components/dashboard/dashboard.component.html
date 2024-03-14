@@ -1,0 +1,37 @@
+<nav class="navbar shadow navbar-expand-sm shadow">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/dashboard" style="color: white"
+      ><h1>Pixel Pictures</h1></a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ms-auto">
+        <ng-container *ngFor="let menu of navbar">
+          <li class="nav-item">
+            <button
+              *ngIf="menu.name !== 'Logout'; else logoutButton"
+              class="nav-link nav-btn"
+              [routerLink]="menu.url"
+              routerLinkActive="active"
+            >
+              {{ menu.name }}
+            </button>
+
+            <ng-template #logoutButton>
+              <button class="nav-link nav-btn" (click)="logout()">
+                {{ menu.name }}
+              </button>
+            </ng-template>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
