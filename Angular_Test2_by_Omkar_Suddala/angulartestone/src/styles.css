@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap");
+:root {
+	--c-primary: #b2b377;
+	--p-8-16: 8px 16px;
+	--m-8-0: 8px 0;
+}
+html {
+	font-family: "Mitr", sans-serif;
+}
+body {
+	/* width: 100vw; */
+	height: 100vh;
+	background-color: aliceblue;
+
+	color: black !important;
+	background-size: 100% 100vh;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}

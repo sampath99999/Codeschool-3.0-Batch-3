@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+	<div class="col-12 col-lg-8 table-responsive">
+		<h1>Task List</h1>
+		<table class="table">
+			<thead class="thead">
+				<tr class="text-black">
+					@for(items of tableColumnNames;track $index){
+					<td class="">{{ items.label }}</td>
+					} @empty {
+					<td colspan="100">
+						<h5 class="text-center text-danger my-3">
+							No Data Available.
+						</h5>
+					</td>
+					}
+				</tr>
+			</thead>
+			<tbody class="text-black" id="dataTableBody">
+				@for(task of tasks.tasks;track $index){
+				<tr>
+					<td>
+						{{ $index + 1 }}
+					</td>
+					<td>{{ task.title }}</td>
+					<td>
+						{{ task.description }}
+					</td>
+					<td>
+						{{ task.deadline }}
+					</td>
+					<td>
+						{{ task.status }}
+					</td>
+				</tr>
+				}@empty {
+				<tr>
+					no tasks available!
+				</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

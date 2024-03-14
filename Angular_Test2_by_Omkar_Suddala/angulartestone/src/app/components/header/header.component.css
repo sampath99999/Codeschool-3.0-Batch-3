@@ -1,0 +1,17 @@
+/* .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: #fff !important;
+}
+.nav-link {
+  color: rgb(255 255 255 / 65%) !important;
+}
+.navbar-toggler {
+  background-color: #fff !important;
+}
+.nav {
+  backdrop-filter: blur(6px);
+  border: 5px solid #ffffff80;
+  -webkit-box-shadow: -1px -1px 30px -8px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: -1px -1px 30px -8px rgba(0, 0, 0, 0.9);
+  box-shadow: -1px -1px 30px -8px rgba(0, 0, 0, 0.9);
+} */

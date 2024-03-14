@@ -1,0 +1,99 @@
+<div class="reg-container d-flex justify-content-center align-items-center">
+	<div class="reg-content d-flex flex-column justify-content-center gap-4">
+		<div class="reg-content_header text-black">
+			<h2>Join with us</h2>
+		</div>
+		<div>
+			<form class="reg-form" [formGroup]="form" (submit)="register()">
+				<input
+					type="text"
+					id="username"
+					placeholder="Your Name"
+					required
+					minlength="3"
+					maxlength="25"
+					formControlName="username"
+				/>
+				<span
+					*ngIf="
+						auth.isFieldInvalid('username', form, isFormSubmitted)
+					"
+					class="text-black fs-6"
+				>
+					{{ auth.getErrorMessage(form, "username", "Full Name") }}
+				</span>
+				<input
+					type="email"
+					id="email"
+					placeholder="Your email"
+					formControlName="email"
+					required
+					minlength="3"
+					maxlength="25"
+					pattern
+				/>
+				<span
+					*ngIf="auth.isFieldInvalid('email', form, isFormSubmitted)"
+					class="text-black fs-6"
+				>
+					{{ auth.getErrorMessage(form, "email", "Email") }}
+				</span>
+				<span
+					class="text-black fs-6"
+					[innerHTML]="emailErrorMessage"
+				></span>
+
+				<input
+					type="password"
+					id="password"
+					placeholder="Your Password"
+					formControlName="password"
+					required
+					minlength="8"
+					maxlength="25"
+				/>
+				<p
+					*ngIf="
+						auth.isFieldInvalid('password', form, isFormSubmitted)
+					"
+					class="text-black fs-6"
+				>
+					{{ auth.getErrorMessage(form, "password", "Password") }}
+				</p>
+				<button type="submit" class="rounded-3 py-2 text-black">
+					Register @if(loader){
+					<div
+						class="spinner-border text-light fs-6"
+						role="status"
+					></div>
+					}
+				</button>
+			</form>
+			<div class="reg-netoworks text-black">
+				<p>
+					Don't have an account?
+					<a
+						routerLink="/login"
+						class="text-decoration-none text-black fs-6"
+						>login</a
+					>
+				</p>
+				<div class="reg-or d-flex justify-content-center"><hr /></div>
+				<!-- <ul class="reg-icons">
+          <li>
+            <box-icon color="#fff" type='logo' name='google'></box-icon> Sing in with Google
+          </li>
+          <li>
+            <box-icon color="#fff" type='logo' name='facebook-circle'></box-icon> Sing in with Facebook
+          </li>
+          <li>
+            <box-icon color="#fff" type='logo' name='github'></box-icon> Sing in with GitHub
+          </li>
+        </ul> -->
+			</div>
+		</div>
+	</div>
+	<div class="reg-footer">
+		<p>Terms of use | Privacy policy</p>
+	</div>
+</div>
