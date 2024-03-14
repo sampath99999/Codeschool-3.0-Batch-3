@@ -1,0 +1,34 @@
+<div class="container">
+  <h1 class="heading">Welcome back to the community</h1>
+
+  <p class="para">
+    Take your art to the next level. Get it seen by millions of people.
+  </p>
+
+  <a routerLink="/signUp" class="fb">Create New Account </a>
+
+  <p class="or">Or</p>
+
+  <form (ngSubmit)="login()">
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+      [(ngModel)]="email"
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      required
+      [(ngModel)]="password"
+    />
+    <p class="text-danger" [innerHTML]="errorMessage"></p>
+    <button type="submit">Login</button>
+  </form>
+
+  <p class="foot">
+    By joining, you agree to our Terms of Service and Privacy Policy
+  </p>
+</div>

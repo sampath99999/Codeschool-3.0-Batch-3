@@ -1,0 +1,88 @@
+<div class="login-container d-flex justify-content-center align-items-center">
+	<div class="login-content d-flex flex-column justify-content-center gap-4">
+		<div class="login-content_header">
+			<h2>Welcome back</h2>
+		</div>
+		<div>
+			<form
+				class="login-form"
+				(ngSubmit)="login()"
+				[formGroup]="loginFormGroup"
+			>
+				<input
+					type="email"
+					id="email"
+					placeholder="Your email"
+					formControlName="email"
+					required
+				/>
+				@if (auth.isFieldInvalid("email",loginFormGroup,formSubmitted))
+				{
+				<p class="text-black fs-6 m-0">
+					{{ auth.getErrorMessage(loginFormGroup, "email", "Email") }}
+				</p>
+				}
+				<input
+					type="password"
+					id="password"
+					placeholder="Your password"
+					formControlName="password"
+					required
+				/>
+				@if
+				(auth.isFieldInvalid("password",loginFormGroup,formSubmitted)) {
+				<p class="text-black fs-6 m-0">
+					{{
+						auth.getErrorMessage(
+							loginFormGroup,
+							"password",
+							"Password"
+						)
+					}}
+				</p>
+				} @else {
+				<p class="text-black fs-6 m-0" [innerHTML]="errorMessage"></p>
+
+				}
+				<button
+					type="submit"
+					class="rounded-3 py-2 text-black"
+					value="Login"
+				>
+					Login @if(loader){
+					<div
+						class="spinner-border text-light fs-6"
+						role="status"
+					></div>
+
+					}
+				</button>
+			</form>
+			<div class="login-netoworks">
+				<p>
+					Don't have an account?
+					<a
+						routerLink="/register"
+						class="text-decoration-none text-black fs-6"
+						>Register</a
+					>
+				</p>
+				<div class="login-or d-flex justify-content-center"><hr /></div>
+				<!-- <ul class="login-icons">
+          <li>
+            <box-icon color="#fff" type='logo' name='google'></box-icon> Sing in with Google
+          </li>
+          <li>
+            <box-icon color="#fff" type='logo' name='facebook-circle'></box-icon> Sing in with Facebook
+          </li>
+          <li>
+            <box-icon color="#fff" type='logo' name='github'></box-icon> Sing in with GitHub
+          </li>
+        </ul> -->
+			</div>
+		</div>
+	</div>
+	<div class="login-footer">
+		<p>Terms of use | Privacy policy</p>
+	</div>
+</div>

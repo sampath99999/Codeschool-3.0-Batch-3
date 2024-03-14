@@ -1,0 +1,32 @@
+<div class="container-fluid mb-3">
+  <div class="row justify-content-center">
+    <div
+      class="col-lg-6 shadow col-xl-5 col-md-6 col-12 all rounded-pill nav justify-content-evenly align-content-center"
+    >
+      @if ((asyncTabs | async) === null) {
+      <span class="text-white">Loading tabs...</span> }
+
+      <ul
+        type="none"
+        class="list-group-horizontal d-flex align-items-center flex-wrap text-white p-0 m-0 justify-content-center align-content-center"
+      >
+        @for (tab of asyncTabs | async; track tab) {
+
+        <li
+          class="list-group-item bg-transparent d-inline-block px-lg-3 rounded-pill"
+        >
+          <a
+            href=""
+            [routerLink]="tab.url"
+            routerLinkActive="active font-weight-bold"
+            IsActiveMatchOptions="{ exact: true }"
+            class="text-decoration-none text-white rounded-pill px-3 py-2"
+            >{{ tab.label }}</a
+          >
+        </li>
+
+        }
+      </ul>
+    </div>
+  </div>
+</div>

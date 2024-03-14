@@ -1,0 +1,140 @@
+<div class="reg-container d-flex justify-content-center align-items-center">
+	<div class="reg-content d-flex flex-column gap-4">
+		<div class="reg-content_header">
+			<h2 class="text-center">Create Task</h2>
+		</div>
+		<div>
+			<form class="reg-form" [formGroup]="form" (submit)="createTask()">
+				<!-- <input
+					type="text"
+					id="task_name"
+					placeholder="Your task name"
+					required
+					minlength="3"
+					maxlength="25"
+					formControlName="task_name"
+				/>
+				<span
+					*ngIf="
+						auth.isFieldInvalid('task_name', form, isFormSubmitted)
+					"
+					class="text-black fs-6"
+				>
+					{{ auth.getErrorMessage(form, "task_name", "Full Name") }}
+				</span> -->
+				<label class="text-start fs-6" for="task_name"
+					>User_Assign:
+				</label>
+
+				<select class="form-select" formControlName="User_Assign">
+					<option selected [defaultSelected]>Assign to User</option>
+					@for(user of users.users;track user){
+					<option [value]="user.id">{{ user.username }}</option>
+
+					}
+				</select>
+				<span
+					*ngIf="
+						auth.isFieldInvalid(
+							'User_Assign',
+							form,
+							isFormSubmitted
+						)
+					"
+					class="text-black fs-6"
+				>
+					{{
+						auth.getErrorMessage(
+							form,
+							"User_Assign",
+							"User Assign "
+						)
+					}}
+				</span>
+				<span
+					class="text-black fs-6"
+					[innerHTML]="titleErrorMessage"
+				></span>
+				<label for="task_name" class="fs-6">Task Title: </label>
+
+				<input
+					type="text"
+					id="Title "
+					placeholder="Enter task title "
+					formControlName="Title"
+					required
+				/>
+				<span
+					*ngIf="auth.isFieldInvalid('Title', form, isFormSubmitted)"
+					class="text-black fs-6"
+				>
+					{{ auth.getErrorMessage(form, "Title", "Title ") }}
+				</span>
+				<span
+					class="text-black fs-6"
+					[innerHTML]="titleErrorMessage"
+				></span>
+				<label for="task_name">Task Deadline: </label>
+
+				<input
+					type="date"
+					id="deadline"
+					
+					placeholder="Enter task title "
+					formControlName="deadline"
+					class="datepicker"
+					required
+				/>
+				<span
+					*ngIf="
+						auth.isFieldInvalid('deadline', form, isFormSubmitted)
+					"
+					class="text-black fs-6"
+				>
+					{{ auth.getErrorMessage(form, "deadline", "Deadline ") }}
+				</span>
+				<span
+					class="text-black fs-6"
+					[innerHTML]="titleErrorMessage"
+				></span>
+				<label for="task_name">Task Description: </label>
+
+				<input
+					type="text"
+					id="description"
+					placeholder="Enter description"
+					formControlName="description"
+					required
+				/>
+				<span
+					*ngIf="
+						auth.isFieldInvalid(
+							'description',
+							form,
+							isFormSubmitted
+						)
+					"
+					class="text-black fs-6"
+				>
+					{{
+						auth.getErrorMessage(form, "description", "Description")
+					}}
+				</span>
+				<button type="submit" class="rounded-3 py-2 text-black">
+					Create @if(loader){
+					<div
+						class="spinner-border text-light fs-6"
+						role="status"
+					></div>
+					}
+				</button>
+			</form>
+			<div class="reg-netoworks">
+				<div class="reg-or d-flex justify-content-center"><hr /></div>
+			</div>
+		</div>
+	</div>
+	<div class="reg-footer">
+		<p>Terms of use | Privacy policy</p>
+	</div>
+</div>

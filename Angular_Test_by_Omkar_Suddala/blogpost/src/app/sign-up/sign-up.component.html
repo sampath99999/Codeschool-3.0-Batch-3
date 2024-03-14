@@ -1,0 +1,62 @@
+<div class="container">
+  <h1 class="heading">Join the community</h1>
+
+  <p class="para">
+    Take your art to the next level. Get it seen by millions of people.
+  </p>
+
+  <a routerLink="/signIn" class="fb"> Login</a>
+
+  <p class="or">Or</p>
+
+  <form (ngSubmit)="signUp()">
+    <div class="row">
+      <input
+        type="text"
+        name="firstName"
+        [(ngModel)]="firstName"
+        placeholder="First name"
+        required
+        (input)="usernameValidate()"
+      />
+      <input
+        type="text"
+        name="lastName"
+        [(ngModel)]="lastName"
+        placeholder="Last Name"
+        required
+        (input)="usernameValidate()"
+      />
+    </div>
+    <small
+      [innerHTML]="usernameMessage"
+      class="ms-2 text-danger text-start"
+    ></small>
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="email"
+      placeholder="Email"
+      required
+      (input)="emailValidate()"
+    />
+    <small
+      [innerHTML]="emailMessage"
+      class="ms-2 text-danger text-start"
+    ></small>
+    <input
+      type="password"
+      name="password"
+      [(ngModel)]="password"
+      placeholder="Password"
+      required
+      (input)="passwordValidate()"
+    />
+    <small [innerHTML]="passwordMessage" class="text-danger text-start"></small>
+    <button type="submit">Create New Account</button>
+  </form>
+
+  <p class="foot">
+    By joining, you agree to our Terms of Service and Privacy Policy
+  </p>
+</div>

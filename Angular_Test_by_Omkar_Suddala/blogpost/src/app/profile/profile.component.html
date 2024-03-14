@@ -1,0 +1,129 @@
+<app-navbar></app-navbar>
+<header>
+    <div class="containers">
+        <div class="profile">
+            <div class="profile-image">
+                <img
+                    src="../../assets/images/pexels-photo-771742.jpg"
+                    alt=""
+                    width="150px"
+                    height="150px"
+                    class="object-fit-cover"
+                />
+            </div>
+
+            <div class="profile-user-settings">
+                <h1 class="profile-user-name fs-3 text-nowrap">
+                    {{ userData.userdata.username }}
+                </h1>
+
+                <button
+                    class="btn profile-edit-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                >
+                    Edit Profile
+                </button>
+            </div>
+
+            <div class="profile-stats">
+                <ul>
+                    <li>
+                        <span class="profile-stat-count">{{
+                            userData.profiledata.postcount
+                        }}</span>
+                        posts
+                    </li>
+                    <li>
+                        <span class="profile-stat-count">188</span> followers
+                    </li>
+                    <li>
+                        <span class="profile-stat-count">206</span> following
+                    </li>
+                </ul>
+            </div>
+
+            <div class="profile-bio ms-2">
+                <p class="fs-6">
+                    <span class="profile-real-name fs-4">Jane Doe</span> Lorem
+                    ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
+                </p>
+            </div>
+        </div>
+        <!-- End of profile section -->
+    </div>
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Profile edit
+                    </h1>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label"
+                            >Name</label
+                        >
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            [(ngModel)]="fullName"
+                        />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn bg-danger text-white p-2"
+                        data-bs-dismiss="modal"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        type="button"
+                        class="btn bg-success text-white p-2"
+                        (click)="editProfile()"
+                    >
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of container -->
+</header>
+
+<div class="container">
+    <div class="row justify-content-start gap-2">
+        @for(post of allPost;track post){
+        <div class="col-lg-2 col-md-4 col-12 p-1 shadow">
+            <a
+                routerLink="viewPost"
+                class="text-decoration-none d-inline-block"
+                (click)="viewPost(post.postid)"
+            >
+                <img
+                    [src]="postImagePath + post.blogimage"
+                    class="w-100 object-fit-cover h-100"
+            /></a>
+        </div>
+        }@empty { No posts yet! }
+    </div>
+</div>

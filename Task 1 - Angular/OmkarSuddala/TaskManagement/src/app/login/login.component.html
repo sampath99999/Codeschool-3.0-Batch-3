@@ -1,0 +1,112 @@
+<div class="container-fluid h-100 full">
+  <div class="row justify-content-center h-100 align-items-center">
+    <div class="col-lg-3 col-md-6 col-12 backFilter rounded-4">
+      <mat-tab-group #tabGroup mat-stretch-tabs="false" mat-align-tabs="center">
+        <mat-tab label="Signin"><app-sign-in></app-sign-in></mat-tab>
+        <mat-tab label="Signup"
+          ><form action="Post" id="register">
+            <div
+              class="d-flex flex-column pt-5 pb-4 gap-1 justify-content-center"
+            >
+              <div>
+                <label for="firstName" class="form-label"> Full Name: </label
+                ><br />
+
+                <input
+                  type="text"
+                  name="fname"
+                  class="form-control rounded-pill"
+                  id="fullName"
+                  [(ngModel)]="userForm.fullname"
+                  #fname="ngModel"
+                  [class.is-valid]="fname.dirty === true"
+                  [class.is-invalid]="
+                    fname.dirty === false && fname.touched === true
+                  "
+                  required
+                />
+                @if( fname.invalid && fname.touched ){
+                <span class="text-danger">Please enter your name</span>
+                }
+              </div>
+              <div>
+                <label for="email" class="form-label ms-2">
+                  Email Address: </label
+                ><br />
+                <input
+                  type="email"
+                  name="email"
+                  [class.is-valid]="emailSuccess === 'true'"
+                  [class.is-invalid]="emailSuccess === 'false'"
+                  class="form-control rounded-pill"
+                  id="emailInput"
+                  aria-describedby="emailHelp"
+                  [(ngModel)]="email"
+                  (input)="validateEmail()"
+                  required
+                />
+                <span class="text-danger" [innerHTML]="emailError"></span>
+              </div>
+              <div>
+                <label for="password" class="form-label"> Password: </label
+                ><br />
+                <input
+                  type="password"
+                  name="pass"
+                  [class.is-valid]="passwordSuccess === 'true'"
+                  [class.is-invalid]="passwordSuccess === 'false'"
+                  class="form-control rounded-pill"
+                  id="password"
+                  minlength="8"
+                  (input)="validatePassword()"
+                  [(ngModel)]="password"
+                  required
+                />
+                <span
+                  id="message"
+                  [class.d-none]="passwordSuccess === 'true'"
+                  [class.text-danger]="passwordSuccess === 'false'"
+                  class=""
+                  [innerHTML]="passwordMessage"
+                ></span>
+              </div>
+              <div>
+                <label for="confirmPassword" class="form-label">
+                  Confirm Password:
+                </label>
+                <input
+                  type="text"
+                  class="form-control rounded-pill"
+                  [class.is-valid]="success === 'true'"
+                  [class.is-invalid]="success === 'false'"
+                  name="confirmpassword"
+                  id="confirmPassword"
+                  [(ngModel)]="confirmPassword"
+                  (input)="checkPassword()"
+                />
+                <span
+                  id="message"
+                  [class.text-success]="success === 'true'"
+                  [class.text-danger]="success === 'false'"
+                  class=""
+                  [innerHTML]="message"
+                ></span>
+              </div>
+              <div
+                class="d-flex flex-column justify-content-center align-items-center"
+              >
+                <button
+                  type="submit"
+                  class="btn ms-auto me-auto px-3 btn-outline-light mt-3 rounded-pill"
+                  (click)="register()"
+                >
+                  Register
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.sideNav-content {
+	backdrop-filter: blur(6px) !important;
+	background-color: aliceblue !important;
+	border: 2px solid #d2d18080;
+	-webkit-box-shadow: -1px -1px 30px -8px rgba(0, 0, 0, 0.9);
+	-moz-box-shadow: -1px -1px 30px -8px rgba(0, 0, 0, 0.9);
+	box-shadow: -1px -1px 30px -8px rgba(0, 0, 0, 0.9);
+	border-radius: 1.6rem;
+	color: black !important;
+}
+.active {
+	background-color: #b2b377 !important;
+	color: rgb(0, 0, 0) !important;
+}

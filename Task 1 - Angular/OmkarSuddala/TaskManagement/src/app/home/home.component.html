@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row justify-content-center align-item-center">
+    <div class="col-12 clo-md-8 col-lg-10">
+      <h3 class="text-start shadow text-white filtersDiv ps-4 rounded-4 py-3">
+        Dashboard
+      </h3>
+      <div
+        class="row gap-3 justify-content-center shadow mt-lg-5 filtersDiv py-3 px-lg-4 rounded-4"
+      >
+        <div
+          class="col-lg col-md-5 col-12 card shadow p-3 filtersDiv rounded-4"
+        >
+          <h2>All tasks</h2>
+          <h2>
+            <span id="allTasks" class="fs-3">{{ task[0].count }}</span>
+          </h2>
+          <!-- </div> -->
+        </div>
+        <div
+          class="col-lg col-md-5 col-12 card shadow p-3 filtersDiv rounded-4"
+        >
+          <h2>To Do</h2>
+          <h2>
+            <span id="allTasks" class="fs-3">{{ taskTo[0].count }}</span>
+          </h2>
+          <!-- </div> -->
+        </div>
+        <div
+          class="col-lg col-md-5 col-12 card shadow p-3 filtersDiv rounded-4"
+        >
+          <h2>In Progress</h2>
+          <h2>
+            <span id="allTasks" class="fs-3">{{ taskProgress[0].count }}</span>
+          </h2>
+          <!-- </div> -->
+        </div>
+        <div
+          class="col-lg col-md-5 col-12 card shadow p-3 filtersDiv rounded-4"
+        >
+          <h2>Completed</h2>
+          <h2>
+            <span id="allTasks" class="fs-3">{{ taskCompleted[0].count }}</span>
+          </h2>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

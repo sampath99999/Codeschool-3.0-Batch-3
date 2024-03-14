@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="table table-responsive">
+        <table class="table">
+          <thead class="thead">
+            <tr class="tr">
+              @for(item of tableItems;track $index){
+              <th>{{ item.label }}</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            @for(user of users;track $index) {
+            <tr>
+              <td>{{ $index + 1 }}</td>
+
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.createdatregistration }}</td>
+              <td>
+                <button
+                  class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  type="button"
+                  [attr.data-bs-target]="deleteId + user.id"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+            <div
+              class="modal"
+              [id]="deleteItem + user.id"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                      Delete User
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">Are you sure!</div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      No
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="deleteUser(user.id)"
+                    >
+                      Yes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

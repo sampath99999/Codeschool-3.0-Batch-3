@@ -1,0 +1,69 @@
+<div class="container-fluid px-3 pt-4 mb-3 header shadow rounded-4">
+  <div class="row nav px-3 pt-3 bg-transparent rounded-3">
+    <nav class="navbar nav-pills navbar-expand-lg bg-transparent">
+      <div class="container-fluid bg-transparent">
+        <a class="navbar-brand" href="#">Task Management</a>
+        <button
+          class="btn navbar-toggler rounded-pill btn-outline-dark border border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="bi bi-list text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            @for(navL of navLinks; track navLinks){
+            <li class="nav-item">
+              <a
+                class="nav-link rounded-pill px-3"
+                [routerLink]="navL.url"
+                routerLinkActive="active font-weight-bold"
+                IsActiveMatchOptions="{ exact: true }"
+                [name]="$index"
+                aria-current="page"
+                >{{ navL.name }}</a
+              >
+            </li>
+
+            }
+            <div class="dropdown bg-transparent">
+              <button
+                class="btn bg-transparent rounded-pill dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{ userInfo.username }}
+              </button>
+              <ul class="dropdown-menu rounded-4 bg-transparent">
+                <li>
+                  <a
+                    class="dropdown-item bg-transparent"
+                    href="#"
+                    (click)="logout()"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </ul>
+          <!-- <form class="d-flex bg-transparent">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form> -->
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

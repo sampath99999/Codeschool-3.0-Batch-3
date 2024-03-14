@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5433,
+            "driver": "PostgreSQL",
+            "name": "blogpost",
+            "database": "royMeet",
+            "username": "postgres",
+            "password": "root"
+        }
+    ],
+    "cSpell.words": [
+        "commentdate"
+    ]
+}

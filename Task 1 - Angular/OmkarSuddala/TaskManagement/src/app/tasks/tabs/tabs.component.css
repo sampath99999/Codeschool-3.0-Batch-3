@@ -1,0 +1,14 @@
+.active {
+  background-color: rgba(255, 255, 255, 0.117) !important;
+}
+
+.nav {
+  background-color: rgba(255, 255, 255, 0.051) !important;
+  backdrop-filter: blur(100px) !important;
+  padding: 10px;
+}
+
+a:hover {
+  background-color: rgba(255, 255, 255, 0.117) !important;
+  border-radius: 50px;
+}

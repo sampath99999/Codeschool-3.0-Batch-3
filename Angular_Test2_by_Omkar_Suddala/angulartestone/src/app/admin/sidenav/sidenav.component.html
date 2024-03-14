@@ -1,0 +1,104 @@
+<div
+	class="flex-column sideNav-content d-none d-lg-flex vh-100 flex-shrink-0 p-3 px-1 bg-transparent"
+	style="width: 250px"
+>
+	<a
+		routerLink="/"
+		class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+	>
+		<svg class="bi me-2" width="40" height="32">
+			<use xlink:href="#bootstrap"></use>
+		</svg>
+		<span class="fs-4 text-black">Task</span>
+	</a>
+	<hr />
+	<ul class="nav nav-pills flex-column mb-auto">
+		@for(menuItem of menuItems;track menuItem){
+		<li class="nav-item">
+			<a
+				[routerLink]="menuItem.link"
+				routerLinkActive="active"
+				class="nav-link text-black"
+				aria-current="page"
+			>
+				{{ menuItem.label }}
+			</a>
+		</li>
+		}
+	</ul>
+	<hr />
+	<div>
+		<button class="bg-transparent text-black btn" (click)="logout()">
+			Logout
+		</button>
+	</div>
+	<!-- <div class="dropdown ps-4">
+		<a
+			href="#"
+			class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+			id="dropdownUser2"
+			data-bs-toggle="dropdown"
+			aria-expanded="false"
+		>
+			<img
+				src="https://github.com/mdo.png"
+				alt=""
+				width="32"
+				height="32"
+				class="rounded-circle me-2"
+			/>
+			<strong>mdo</strong>
+		</a>
+		<ul
+			class="dropdown-menu text-small shadow"
+			aria-labelledby="dropdownUser2"
+		>
+			<li>
+				<a class="dropdown-item" href="#">New project...</a>
+			</li>
+			<li><a class="dropdown-item" href="#">Settings</a></li>
+			<li><a class="dropdown-item" href="#">Profile</a></li>
+			<li><hr class="dropdown-divider" /></li>
+			<li><a class="dropdown-item" href="#">Sign out</a></li>
+		</ul>
+	</div> -->
+</div>
+<div class="row d-lg-none d-block">
+	<nav class="navbar navbar-expand-lg shadow bg-white px-2">
+		<div class="container-fluid text-light">
+			<a class="navbar-brand text-black" href="#">Task</a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					@for(menuItem of menuItems; track $index){
+					<li class="nav-item">
+						<a
+							class="nav-link"
+							[routerLink]="menuItem.link"
+							routerLinkActive="active"
+							>{{ menuItem.label }}</a
+						>
+					</li>
+					}
+					<li class="nav-item">
+						<a
+							class="text-decoration-none nav-link bi bi-cursor"
+							(click)="logout()"
+							>Logout</a
+						>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>

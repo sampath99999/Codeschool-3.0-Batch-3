@@ -1,0 +1,26 @@
+@if(loader){ no data! }@else {
+<div class="row vh-100 align-content-center gap-lg-2 justify-content-center">
+	<div class="col-12 col-lg-3 card col-md-6 p-4 shadow">
+		<h1>New Tasks</h1>
+		<h1 [innerHTML]="newTasks"></h1>
+	</div>
+
+	<div class="col-12 col-lg-3 card col-md-6 p-4 shadow">
+		<h1>Ready To Stage</h1>
+		<h1 [innerHTML]="readyTasks"></h1>
+	</div>
+	<div class="col-12 col-lg-3 card col-md-6 p-4 shadow">
+		<h1>Ready for development</h1>
+		<h1 [innerHTML]="developmentTasks"></h1>
+	</div>
+	<div class="col-12 col-lg-3 card col-md-6 p-4 shadow">
+		<h1>Completed tasks</h1>
+		<h1 [innerHTML]="completedTasks"></h1>
+	</div>
+	<div class="col-12 col-lg-3 card col-md-6 p-4 shadow">
+		<h1>All Tasks</h1>
+		<h1 [innerHTML]="allTasks"></h1>
+	</div>
+</div>
+
+}
