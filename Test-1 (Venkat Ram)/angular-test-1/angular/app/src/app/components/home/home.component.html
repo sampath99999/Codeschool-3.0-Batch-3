@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <h2 class="text-center">Claim Dashboard</h2>
+    <div class="d-flex container justify-content-center align-items-center">
+
+        <div class="my-3 table-responsive">
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr>
+                        <th>Claimed By</th>
+                        <th>Claim Name</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        @if (user_type_id == "1"){
+                            <th>Approval Status</th>
+                        }@else if (user_type_id == "2"){
+                            <th>Approve</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data; track $index">
+                        <td>{{item['claim_from']}}</td>
+                        <td>{{item['claim_to']}}</td>
+                        <td>{{item['priority']}}</td>
+                        <td>{{item['description']}}</td>
+                        <td>{{item['deadline']}}</td>
+                        <td>{{item['status']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

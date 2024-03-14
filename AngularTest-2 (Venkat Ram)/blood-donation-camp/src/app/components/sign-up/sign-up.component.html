@@ -1,0 +1,49 @@
+<div class="container d-flex justify-content-center my-5 py-5">
+    <form [formGroup]="signUpForm" class="p-3 d-flex flex-column gap-5 w-25 border border-2">
+        <div>
+            <h3 class="text-center">Sign Up</h3>
+            <hr>
+        </div>
+        <div class="d-flex flex-column gap-1">
+            <input class="p-2" type="text" placeholder="Email" formControlName="email" />
+            @if(email?.invalid && (email?.dirty || email?.touched) ){
+                @if(email?.errors?.['required']){
+                    <span>eMail is Required.</span>
+                }
+            }
+            @if(email?.errors?.['minlength'] && email?.errors?.['email']){
+            <span>Invalid Email!</span>
+            }
+        </div>
+
+        <div class="d-flex flex-column gap-1">
+            <input class="p-2" type="password" placeholder="Password" formControlName="password" />
+            @if(password?.invalid && (password?.dirty ||
+            password?.touched) ){
+                @if(password?.errors?. ['required']){
+                <span>Password is required.</span>
+                }
+            }
+            @if(password?.errors?.['minlength']){
+                <span>Password must be at least 8 characters.</span>
+            }
+        </div>
+
+        <div class="d-flex flex-column gap-1">
+            <input class="p-2" type="username" placeholder="Username" formControlName="username" />
+            @if(username?.invalid && (username?.dirty ||
+            username?.touched) ){
+                @if(username?.errors?. ['required']){
+                <span>Username is required.</span>
+                }
+            }
+            @if(username?.errors?.['minlength']){
+                <span>Username must be at least 4 characters.</span>
+            }
+        </div>
+
+        <div class="d-flex flex-column">
+            <button type="button" [disabled]="!signUpForm.valid" class="btn btn-dark" (click)="signUp()">Sign Up</button>
+        </div>
+    </form>
+</div>

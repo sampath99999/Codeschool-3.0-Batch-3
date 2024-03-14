@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap');
+
+html,
+body {
+    font-family: "Bitter", serif;
+    font-style: normal;
+}
+
+input {
+    outline: none !important;
+    box-shadow: none !important;
+    border-width: 0 0 2px !important;
+    border-color: lightgray !important;
+}
+
+input:focus {
+    border-color: lightgray !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+select {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: lightgray !important;
+}
+
+select:focus {
+    border-color: lightgray !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+textarea {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: lightgray !important;
+}
+
+textarea:focus {
+    border-color: lightgray !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
