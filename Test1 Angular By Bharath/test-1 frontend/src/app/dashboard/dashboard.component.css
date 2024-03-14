@@ -1,0 +1,57 @@
+.employee-list-container {
+  margin: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.modal-dialog {
+  max-width: 800px;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-title {
+  color: #007bff;
+}
+
+.modal-body {
+  font-size: 16px;
+}
+
+.modal-body p {
+  margin-left: 50px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-close {
+  color: #007bff;
+}

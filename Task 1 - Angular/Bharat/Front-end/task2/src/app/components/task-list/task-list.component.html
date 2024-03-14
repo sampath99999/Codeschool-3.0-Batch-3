@@ -1,0 +1,66 @@
+<body>
+  <nav class="navbar navbar-expand-sm shadow" style="background-color: #016072">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/" style="color: white"
+        ><h1>PixelPro Task</h1></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ms-auto">
+          <ng-container *ngFor="let menu of navbar">
+            <li class="nav-item">
+              <button
+                *ngIf="menu.name !== 'Logout'; else logoutButton"
+                class="nav-link"
+                [routerLink]="menu.url"
+                routerLinkActive="active"
+              >
+                {{ menu.name }}
+              </button>
+
+              <ng-template #logoutButton>
+                <button class="nav-link" (click)="logout()">
+                  {{ menu.name }}
+                </button>
+              </ng-template>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="task-table mt-5">
+    <h2>Task List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Task Name</th>
+          <th>Category</th>
+          <th>Priority</th>
+          <th>Description</th>
+          <th>Deadline</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of data; track $index){
+        <tr>
+          <td>{{ item.task_name }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.priority }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.deadline }}</td>
+          <td>{{ item.status }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</body>

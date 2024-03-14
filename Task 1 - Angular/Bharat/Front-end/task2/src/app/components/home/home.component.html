@@ -1,0 +1,54 @@
+<body>
+  <nav class="navbar navbar-expand-sm shadow" style="background-color: #016072">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/" style="color: white"
+        ><h1>PixelPro Task</h1></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ms-auto">
+          <ng-container *ngFor="let menus of navbar">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="menus.url"
+                routerLinkActive="active"
+                style="color: white"
+                >{{ menus.name }}</a
+              >
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center align-items-center m-auto">
+      <div class="col-lg-6 col-md-10 col-12 home rounded-4 px-3 py-2">
+        <h3 class="card-title text-center" style="color: #016072">
+          PixelPro Task
+        </h3>
+
+        <p class="card-text fs-4 text-justify mt-2" style="color: #016072">
+          In a team or collaborative setting, tasks are often distributed among
+          team members based on their skills and expertise. Effective
+          communication and collaboration are key for successful task execution.
+          Tasks are performed with a specific purpose or objective in mind. They
+          are often aligned with broader goals or milestones.Tasks are often
+          prioritized based on their importance and urgency. Effective task
+          management involves prioritizing activities to ensure that essential
+          and time-sensitive tasks are addressed first.
+        </p>
+        <p class="author text-end fs-5">-Bharath</p>
+      </div>
+    </div>
+  </div>
+</body>

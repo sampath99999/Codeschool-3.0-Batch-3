@@ -1,0 +1,48 @@
+form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+   color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  div {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+    
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #7455CC;
+    color: #fff;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:disabled {
+    background-color:#30BD92;
+    cursor: not-allowed;
+  }
+  
+  .text-danger {
+    color: light
+  }

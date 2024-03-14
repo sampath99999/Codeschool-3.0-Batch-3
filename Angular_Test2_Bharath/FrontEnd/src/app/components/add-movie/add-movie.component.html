@@ -1,0 +1,93 @@
+<!-- <nav class="navbar navbar-expand-sm shadow-lg">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/dashboard" style="color: white"
+      ><h1>Pixel Pictures</h1></a
+    >
+  </div>
+</nav> -->
+<form
+  class="d-flex align-items-center head justify-content-center flex-column"
+  [formGroup]="movieFormGroup"
+  (ngSubmit)="addMovie()"
+>
+  <h2>Add Movie</h2>
+  <div class="mb-1">
+    <label for="title">Title:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      placeholder="Title"
+      formControlName="title"
+    />
+    <p *ngIf="isFieldInvalid('title')" class="text-light">
+      {{ getErrorMessage("title", "Title") }}
+    </p>
+  </div>
+
+  <div class="mb-1">
+    <label for="director">Director:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="director"
+      placeholder="Director"
+      formControlName="director"
+    />
+    <p *ngIf="isFieldInvalid('director')" class="text-light">
+      {{ getErrorMessage("director", "Director") }}
+    </p>
+  </div>
+  <div class="mb-1">
+    <label for="rating">Rating:</label>
+    <input
+      type="number"
+      class="form-control"
+      id="rating"
+      placeholder="Rating"
+      formControlName="rating"
+    />
+    <p *ngIf="isFieldInvalid('rating')" class="text-light">
+      {{ getErrorMessage("rating", "Rating") }}
+    </p>
+  </div>
+  <div class="mb-1">
+    <label for="poster_url">Poster URL:</label>
+    <input
+      type="text"
+      id="poster_url"
+      class="form-control"
+      placeholder="Poster URL"
+      formControlName="poster_url"
+    />
+    <p *ngIf="isFieldInvalid('poster_url')" class="text-light">
+      {{ getErrorMessage("poster_url", "Poster URL") }}
+    </p>
+  </div>
+  <div class="mb-1">
+    <!-- <select
+      name="watched"
+      id="watched"
+      class="watched-select form-control"
+      formControlName="watched"
+    >
+      <option value="watched">Watched</option>
+      <option value="UnWatched">Unwatched</option>
+    </select> -->
+  </div>
+  <select
+    name="categories"
+    id="categories"
+    class="categories-select form-control"
+    formControlName="categories"
+  >
+    <option value="1">Action</option>
+    <option value="2">Love</option>
+    <option value="3">Horror</option>
+    <option value="4">Comedy</option>
+    <option value="5">Fantasy</option>
+    <option value="6">Romance</option>
+  </select>
+
+  <button class="btn mt-2">AddMovie</button>
+</form>

@@ -1,0 +1,43 @@
+ .col-4{
+    justify-content: space-around;
+    flex-direction: row;
+  }
+   .card {
+    width: 70%; 
+    margin-bottom: 20px;
+  } 
+ 
+
+  .card-body {
+    text-align: center;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+ 
+ .watched-select {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+
+  .watched-select option {
+    background-color: #fff;
+    color: #000;
+  }
+  
+
+  .watched-select option:checked {
+    background-color: #007bff; 
+    color: #fff;
+  }

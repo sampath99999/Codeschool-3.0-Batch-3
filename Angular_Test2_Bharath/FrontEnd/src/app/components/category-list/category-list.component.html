@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-sm shadow-lg">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/dashboard" style="color: white"
+      ><h1>Pixel Pictures</h1></a
+    >
+  </div>
+</nav>
+
+<div class="container category mt-5">
+  <h1 class="text-white mb-5">Categories of the movies available are:</h1>
+  <div>
+    <div
+      class="container w-75 d-flex flex-wrap gap-5 justify-content-center align-items-center"
+    >
+      @for(category of categories; track $index) {
+      <p class="catButton btn btn-outline-light fs-3 border border-2 py-4 m-3">
+        {{ category[1] }}
+      </p>
+      }
+    </div>
+  </div>
+</div>

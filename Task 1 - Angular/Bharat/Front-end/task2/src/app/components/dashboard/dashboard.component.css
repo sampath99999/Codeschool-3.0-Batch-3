@@ -1,0 +1,25 @@
+body {
+  background-image: url(https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-repeat: no-repeat;
+  background: cover;
+  background-position: fixed;
+  height: 100vh;
+  margin: 0;
+}
+.navbar {
+  color: white;
+}
+.navbar-brand {
+  color: white;
+}
+.nav-link {
+  color: white;
+  background-color: #05b9dd;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.nav-link:hover {
+  background-color: #1b95ad;
+  color: white;
+}

@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-sm shadow">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" style="color: white"
+      ><h1>Pixel Pictures</h1></a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ms-auto">
+        <ng-container *ngFor="let menus of navbar">
+          <li class="nav-item">
+            <button
+              class="nav-link nav-btn"
+              [routerLink]="menus.url"
+              routerLinkActive="active"
+            >
+              {{ menus.name }}
+            </button>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<form
+  (ngSubmit)="login()"
+  class="d-flex align-items-center login justify-content-center flex-column"
+  [formGroup]="loginFormGroup"
+>
+  <h2>Login</h2>
+  <div class="mb-1">
+    <label for="email">Email:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="email"
+      placeholder="Email"
+      formControlName="email"
+    />
+  </div>
+  @if (isFieldInvalid("email")) {
+  <p class="text-light">{{ getErrorMessage("email", "Email") }}</p>
+  }
+
+  <div>
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+  </div>
+  @if (isFieldInvalid("password")) {
+  <small class="text-light">{{
+    getErrorMessage("password", "Password")
+  }}</small>
+  }
+
+  <button class="btn mt-3">Login</button>
+  <div class="d-flex justify-content-center">
+    <a class="nav-link mt-3" routerLink="/register" routerLinkActive="active"
+      >Create an account.?Register</a
+    >
+  </div>
+</form>
