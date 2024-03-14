@@ -1,0 +1,44 @@
+input {
+    outline: none !important;
+    box-shadow: none !important;
+    border-width: 0 0 2px !important;
+    border-color: lightgray !important;
+}
+
+input:focus {
+    border-color: lightgray !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+select {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: lightgray !important;
+}
+
+select:focus {
+    border-color: lightgray !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+textarea {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: lightgray !important;
+}
+
+textarea:focus {
+    border-color: lightgray !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.form-width{
+    width: 30%;
+}
+
+span{
+    color: red;
+}

@@ -1,0 +1,86 @@
+<div class="form-width rounded-3 d-flex flex-wrap flex-column container p-5 shadow-lg">
+    <h1 class="text-center">Become a Blood Donor</h1>
+    <p class="text-center">Help save lives by becoming a blood donor. Fill in the form below to register your interest.
+    </p>
+    <hr>
+
+    <form class="mt-4 d-flex flex-column justify-content-center align-items-center gap-4" [formGroup]="entryForm" (submit)="registerAsADonor()">
+
+        <div class="container-fluid m-0 p-0 d-flex flex-column gap-1">
+            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+            @if(name?.invalid && (name?.dirty || name?.touched) ){
+                @if(name?.errors?.['required']){
+                    <span>Name is Required.</span>
+                }
+            }
+        </div>
+
+        <div class="container-fluid m-0 p-0 d-flex flex-column gap-1">
+            <input type="email" class="form-control" placeholder="e-Mail" formControlName="email">
+            @if(email?.invalid && (email?.dirty || email?.touched) ){
+                @if(email?.errors?.['required']){
+                    <span>eMail is Required.</span>
+                }
+            }
+        </div>
+
+
+        <div class="container-fluid m-0 p-0 d-flex flex-column gap-1">
+            <input type="number" class="form-control" placeholder="Phone Number" formControlName="phoneNumber">
+            @if(phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched) ){
+                @if(phoneNumber?.errors?.['required']){
+                    <span>phoneNumber is Required.</span>
+                }
+            }
+        </div>
+
+        <div class="container-fluid m-0 p-0 d-flex flex-column gap-1">
+            <select id="blood_group" class="form-control" formControlName="bloodGroup">
+                <option value="" selected disabled hidden>Select Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+            @if(bloodGroup?.invalid && (bloodGroup?.dirty || bloodGroup?.touched) ){
+                @if(bloodGroup?.errors?.['required']){
+                    <span>bloodGroup is Required.</span>
+                }
+            }
+        </div>
+
+        <textarea class="form-control" formControlName="conditions" id="taskDesc" rows="5"
+            placeholder="Medical Conditions (enter 'none' if not applicable)"></textarea>
+
+        <div class="container-fluid m-0 p-0 d-flex flex-column gap-1">
+            <input type="number" formControlName="age" placeholder="Age" class="form-control">
+            @if(age?.invalid && (age?.dirty || age?.touched) ){
+                @if(age?.errors?.['required']){
+                    <span>age is Required.</span>
+                }
+                @if(age?.errors?.['min']){
+                    <span>Can donate blood only if you're 18 or above.</span>
+                }
+                @if(age?.errors?.['max']){
+                    <span>Can donate blood only if you're 65 or below.</span>
+                }
+            }
+        </div>
+        <div class="container-fluid m-0 p-0 d-flex flex-column gap-1">
+            <input type="text" formControlName="city" placeholder="City" class="form-control">
+            @if(city?.invalid && (city?.dirty || city?.touched) ){
+                @if(city?.errors?.['required']){
+                    <span>city is Required.</span>
+                }
+            }
+        </div>
+
+        <button type="submit" class="btn btn-dark">Register as a Donor</button>
+
+    </form>
+
+</div>

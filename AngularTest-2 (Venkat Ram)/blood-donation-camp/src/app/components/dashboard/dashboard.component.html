@@ -1,0 +1,25 @@
+<div class="container-fluid my-5 p-5 gap-5 d-flex flex-column justify-content-center align-items-center">
+    <div>
+        <h4>Here's the potential list of Donors available with us, at the moment.</h4>
+        <p>Please use the Search Bar for a more specific request.</p>
+    </div>
+
+    <div class="my-3 container-fluid w-25">
+        <input type="text" autocomplete="off" class="text-center form-control border border-4" id="taskName"
+            [(ngModel)]="searchText" placeholder="Search">
+    </div>
+
+
+    <div class="container d-flex gap-5 flex-wrap justify-content-center align-items-center">
+        <div *ngFor="let item of data | search: searchText">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-subtitle mb-2 text-body-secondary">{{item['name']}} ({{item['blood_group']}})</h3>
+                    <h4 class="card-text">Age: {{item['age']}}</h4>
+                    <h4 class="card-text">Medical Conditions: {{item['medical_conditions']}}</h4>
+                    <div class="card-link">Contact: {{item['phone_number']}} || {{item['email']}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

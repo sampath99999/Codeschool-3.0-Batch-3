@@ -19,10 +19,6 @@ export class LoginComponent {
     }
   }
 
-  ngOnInit(): void {
-
-  }
-
 
   loginForm = new FormGroup({
     email: new FormControl('', [
@@ -51,6 +47,7 @@ export class LoginComponent {
       .subscribe({
         next: (response) => {
           alert(response.message);
+          console.log(response.data)
           if (response.status) {
             localStorage.setItem('token', response.data[0])
             localStorage.setItem('username', response.data[1][0].username)
