@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+<div class="main">
+  <div class="container vh-100 d-flex align-items-center ">
+    <div id="innerPage">
+      <form class="d-flex align-items-center justify-content-center flex-column" [formGroup]="form"
+            (submit)="register()">
+        <h3 class="mb-4 text-light">Register</h3>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="text" class="form-control" id="fullName" placeholder="Your Name" required minlength="3"
+                     maxlength="25" formControlName="fullName">
+              <label for="fullName">Full Name</label>
+              <p *ngIf="isFieldInvalid('fullName')"
+                 class="text-danger">{{ getErrorMessage('fullName', 'Full Name') }}</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="text" class="form-control" id="email" placeholder="Your Email" formControlName="email"
+                     required minlength="3" maxlength="25">
+              <label for="email">Email</label>
+              <p *ngIf="isFieldInvalid('email')" class="text-danger">{{ getErrorMessage('email', 'email') }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="password" class="form-control" id="password" placeholder="Your Password"
+                     formControlName="password" required minlength="8" maxlength="25">
+              <label for="password">Password</label>
+              <p *ngIf="isFieldInvalid('password')"
+                 class="text-danger">{{ getErrorMessage('password', 'Password') }}</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="date" class="form-control" id="dateOfBirth" placeholder="Your Date of Birth "
+                     formControlName="dateOfBirth" required>
+              <label for="dateOfBirth">Date Of Birth</label>
+              <p *ngIf="isFieldInvalid('dateOfBirth')"
+                 class="text-danger">{{ getErrorMessage('dateOfBirth', 'Date Of Birth') }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="text" class="form-control" id="gender" placeholder="Your Gender" formControlName="gender"
+                     required>
+              <label for="gender">Gender</label>
+              <p *ngIf="isFieldInvalid('gender')" class="text-danger">{{ getErrorMessage('gender', "Gender") }}</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="text" class="form-control" id="address" placeholder="Your Address" formControlName="address"
+                     required>
+              <label for="address">Address</label>
+              <p *ngIf="isFieldInvalid('address')" class="text-danger">{{ getErrorMessage('address', "Address") }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="text" class="form-control" id="city" placeholder="Your City" formControlName="city" required>
+              <label for="city">City</label>
+              <p *ngIf="isFieldInvalid('city')" class="text-danger">{{ getErrorMessage('city', "city") }}</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="text" class="form-control" id="state" placeholder="Your State" formControlName="state"
+                     required>
+              <label for="state">State</label>
+              <p *ngIf="isFieldInvalid('state')" class="text-danger">{{ getErrorMessage('state', "State") }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="number" class="form-control" id="pinCode" placeholder="Your Pin Code"
+                     formControlName="pinCode" required minlength="6" maxlength="6">
+              <label for="pinCode">Pin Code</label>
+              <p *ngIf="isFieldInvalid('pinCode')" class="text-danger">{{ getErrorMessage('pinCode', "Pin Code") }}</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-floating text-light">
+              <input type="number" class="form-control" id="mobileNumber" placeholder="Your Mobile Number"
+                     formControlName="mobileNumber" required minlength="10" maxlength="15">
+              <label for="mobileNumber">Mobile Number</label>
+              <p *ngIf="isFieldInvalid('mobileNumber')"
+                 class="text-danger">{{ getErrorMessage('mobileNumber', "Mobile Number") }}</p>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg mt-3 text-light">Register</button>
+      </form>
+
+    </div>
+  </div>
+</div>
