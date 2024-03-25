@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Adhar Card</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul>
+
+
+      </ul>
+      <div class="ms-auto d-flex gap-2">
+        <div class="pt-2">User</div>
+        <button class="btn btn-outline-success" type="submit" (click)="logout()">logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+@for(data of datas; track data ){
+          <h3 class="text-center mb-4">{{data[1]}}</h3>
+          <!-- Personal Information Section -->
+          <h5>Personal Information</h5>
+          <ul class="list-group">
+            <li class="list-group-item">Aadhar Number: {{data[0]}}</li>
+            <li class="list-group-item">Date of Birth: {{data[2]}}</li>
+            <li class="list-group-item">Gender: {{data[3]}}</li>
+            <li class="list-group-item">Email: {{data[4]}}</li>
+          </ul>
+
+          <h5 class="mt-4">Contact Information</h5>
+  <form [formGroup]="form" (submit)="updateUserData()">
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" placeholder={{data[7]}} formControlName="address" required >
+              <p *ngIf="isFieldInvalid('address')" class="text-danger">{{getErrorMessage('address','Address')}}</p>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" placeholder={{data[8]}} formControlName="city" required>
+                <p *ngIf="isFieldInvalid('city')" class="text-danger">{{getErrorMessage('city','City')}}</p>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" placeholder={{data[9]}} formControlName="state" required>
+                <p *ngIf="isFieldInvalid('state')" class="text-danger">{{getErrorMessage('state','State')}}</p>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="pincode">Pincode</label>
+                <input type="text" class="form-control" id="pincode" placeholder={{data[10]}} formControlName="pinCode" required>
+                <p *ngIf="isFieldInvalid('pinCode')" class="text-danger">{{getErrorMessage('pinCode','Pin Code')}}</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mobile">Mobile Number</label>
+              <input type="text" class="form-control" id="mobile" placeholder={{data[11]}} formControlName="mobileNumber" required>
+              <p *ngIf="isFieldInvalid('mobileNumber')" class="text-danger">{{getErrorMessage('mobileNumber','Mobile Number')}}</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,109 @@
+import { Component } from '@angular/core';
+import {UserService} from "../Services/user.service";
+import {ActivatedRoute, Router, RouterLink, RouterLinkActive} from "@angular/router";
+import {AdminService} from "../Services/admin.service";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {NgIf} from "@angular/common";
+import swal from "sweetalert";
+
+@Component({
+  selector: 'app-user-profile',
+  standalone: true,
+  imports: [RouterLinkActive, RouterLink, FormsModule, ReactiveFormsModule,NgIf],
+  templateUrl: './user-profile.component.html',
+  styleUrl: './user-profile.component.css'
+})
+export class UserProfileComponent {
+  email:any;
+  isValidator:boolean=false;
+  role:string="";
+  isFormSubmitted = false;
+
+  form = new FormGroup({
+    address:new FormControl(''),
+    city:new FormControl(''),
+    state:new FormControl(''),
+    pinCode:new FormControl(''),
+    mobileNumber:new FormControl(''),
+
+  })
+
+  datas:[]=[];
+  constructor(private userService: UserService, public router: Router,  private route: ActivatedRoute) {
+    if (localStorage.getItem('token')) {
+      this.userService.getUser().subscribe((posts) => {
+        this.isValidator = posts['validator'];
+        this.role = posts['role'];
+        if (this.isValidator != true && this.role == "admin") {
+          router.navigate(['/']);
+        } else {
+          this.userService.getUserProfileDetail().subscribe((datas) => {
+            this.datas = datas['data'];
+          });
+        }
+
+
+      });
+    }
+    if (!localStorage.getItem('token')) {
+      router.navigate(['/']);
+    }
+
+  }
+
+
+  updateUserData(){
+    let address=<string>this.form.value.address;
+    let city=<string>this.form.value.city;
+    let state=<string>this.form.value.state;
+    let pinCode=<string>this.form.value.pinCode;
+    let mobileNumber:string=<string>this.form.value.mobileNumber;
+
+    this.isFormSubmitted = true;
+    if(this.form.valid){
+      this.userService.updateUserData(address,city,state,pinCode,mobileNumber).subscribe((posts) => {
+        if(posts['validator']=="true") {
+          swal({
+            title: "Success",
+            text: "Updated successfully",
+            icon: "success",
+            timer: 2000,
+          });
+        }
+        else{
+          swal({
+            title: "failed",
+            text: "Update failed",
+            icon: "error",
+            timer: 2000,
+          });
+        }
+
+      });
+    }
+
+  }
+
+  logout(){
+    this.userService.logout().subscribe((posts) => {
+
+
+    });
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    this.router.navigate(['/']);
+  }
+
+  isFieldInvalid(field: string) {
+    return this.form.get(field)?.invalid && (this.form.get(field)?.touched || this.form.get(field)?.dirty || this.isFormSubmitted)
+  }
+
+  getErrorMessage(field: string, label: string) {
+    if (this.form.get(field)?.hasError("required")) return `${label} is required`;
+    if (this.form.get(field)?.hasError("minlength")) return `${label} should be at least ${this.form.get(field)?.getError("minlength").requiredLength} characters`;
+    if (this.form.get(field)?.hasError("maxlength")) return `${label} should be at most ${this.form.get(field)?.getError("maxlength").requiredLength} characters`;
+    if (this.form.get(field)?.hasError("pattern")) return `${label} is invalid`;
+    return '';
+  }
+}

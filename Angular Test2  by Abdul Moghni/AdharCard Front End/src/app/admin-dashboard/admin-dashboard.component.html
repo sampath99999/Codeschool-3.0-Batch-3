@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" >Adhar Card</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul>
+        <a class="nav-link mt-3 text-dark" [routerLink]="['/admin']">Dashboard </a>
+
+      </ul>
+      <div class="ms-auto d-flex gap-2">
+        <div class="pt-2">Admin</div>
+        <button class="btn btn-outline-success" type="submit" (click)="logout()">logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="main mt-3">
+
+
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Adhar Card no</th>
+          <th>Full Name</th>
+          <th>Mobile Number</th>
+          <th>Email</th>
+          <th>Dob</th>
+          <th>View Detail</th>
+          <th>Delete person</th>
+        </tr>
+        </thead>
+        <tbody>
+@for(data of datas;track data){
+        <tr>
+          <td>{{data[0]}}</td>
+          <td>{{data[1]}}</td>
+          <td>{{data[11]}}</td>
+          <td>{{data[6]}}</td>
+          <td>{{data[2]}}</td>
+          <td><a  class="btn btn-primary"(click)="showProfile(data[4])">View</a></td>
+          <td>
+            <button class="btn btn-danger"(click)="deleteUser(data[4])">Delete</button>
+          </td>
+        </tr>
+}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>
